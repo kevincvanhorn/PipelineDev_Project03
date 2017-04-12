@@ -27,10 +27,14 @@
 
 # Built-in and Third Party
 import os
+import re                           # Handles regular expressions.
 
 # Modules Written by You
 from pd_pipe_core.pipe_context import PipeContext
 from pd_path_lib.formula_manager import FormulaManager  # Handles project formulas.
+from pl_pipe_utils.pl_pipe_enums import OS
+from pl_pipe_utils.utils import Autovivification
+from pl_pipe_utils.pl_pipe_enums import DiskTypes
 
 #----------------------------------------------------------------------------------------#
 #--------------------------------------------------------------------------- FUNCTIONS --#
@@ -59,19 +63,34 @@ class PathContext(object):
     @classmethod
     def examine_path(cls, path, **kwargs):
         formula = FormulaManager()
+        pipe_context = PipeContext()
+        validKeys = Autovivification()
 
-        # Get the formula for the given path:
-
+        # Load into formula dictionary from the formulas.txt documents depending on the path provided.
         if "assets" in path:
-            formula_pieces = formula.create_formulas("as_")
+            formula.create_formulas("as_")
         else:
-            formula_pieces = formula.create_formulas("")
+            formula.create_formulas("")
 
-        print(formula_pieces)
+        formula_pieces = formula.get_formula('pr_base_dir')
 
-        #if not formula_pieces:
-        #    print("ERROR: formula is invalid.")
-        #    return None
+        # WORKING - add all things from enums into this dictionary - make sure 'disk' is the correct format
+                #ie. not {disk} or something
+        validKeys['drive'] = OS.drive
+        #validKeys['disk_type'] = DiskTypes.get_all()
+
+
+        # Replace path references:
+        for entry in formula_pieces:
+            entry = re.sub(r'[\{\}]', "", entry)  # Remove braces from entry.
+            if entry in validKeys.keys():
+                # WORKING, PUT FOR THE ARRAY CASE IN DISKTYPE FROM GET ALL
+                if not path.startswith(validKeys[entry], 0, len(validKeys[entry])):
+                    # Invalid String
+                    print("Result: Unable to find valid context information for this formula ")
+                    return False
+                length =len(validKeys[entry])+1
+                path = path[length:] #remove length of string read from beginning of path.
 
 
 some_path = '//infinity/atec/class/atec3370.001.16f/work/finding_nemo/assets/character/dory'

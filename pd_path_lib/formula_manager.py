@@ -159,7 +159,7 @@ class FormulaManager(object):
         self.clean_formulas()
         self.expand_formulas()
         self.loaded = True
-        return self.formula_dict
+        return True
 
     def get_formula(self, formula_name):
         """

@@ -49,7 +49,7 @@ class IO(object):
         :param message: A warning message.
         :type: str
         """
-        print "WARNING: %s" % message
+        print("WARNING: %s" % message)
 
     @classmethod
     def file_error(cls, file_name):
@@ -59,7 +59,7 @@ class IO(object):
         :param file_name: The pieces of the message to print.
         :type: str
         """
-        print "ERROR: The file provided, '%s', does not exist." % file_name
+        print("ERROR: The file provided, '%s', does not exist." % file_name)
 
     @classmethod
     def info(cls, message):
@@ -69,7 +69,7 @@ class IO(object):
         :param message: The message to print.
         :type: str
         """
-        print message
+        print(message)
 
 
 class Autovivification(dict):
