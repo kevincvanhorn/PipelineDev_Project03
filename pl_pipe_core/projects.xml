@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<root>
+    <project>
+        <xmen>
+            <modified_date value="11/11/11"/>
+            <modified_by value="jbond"/>
+            <description value="this is a test job for the xmen"/>
+            <created_by value="jmoriarty"/>
+            <creation_date value="11/12/11"/>
+            <_id value="abcabcabcabc1234"/>
+            <name value="xmen"/>
+        </xmen>
+        <matrix>
+            <modified_date value="12/12/12"/>
+            <modified_by value="jmoriarty"/>
+            <description value="this is a test job for the matrix"/>
+            <created_by value="jbond"/>
+            <creation_date value="12/13/12"/>
+            <_id value="defdefdefdef5678"/>
+            <name value="matrix"/>
+        </matrix>
+    </project>
+</root>

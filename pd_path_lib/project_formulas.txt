@@ -1,0 +1,25 @@
+# Valid 'root' disk types are: code, config, render, store, and work.
+# Valid keys for use as variable in any of the formulas are:
+#   drive, disk_type, project, sequence, shot, cycle, context_type, asset, asset_type
+#   assembly, discipline, work_area, version, wa_version
+
+# Base project formulas, do not change them.
+pr_base_dir = ('{drive}', '{disk_type}')
+pr_base_proj_dir = ('{pr_base_dir}', '{project}')
+pr_seq_dir = ('{pr_base_proj_dir}', 'sequences')
+pr_as_dir = ('{pr_base_proj_dir}', 'assets')
+pr_asm_dir = ('{pr_base_proj_dir}', 'assemblies')
+pr_cycle_dir = ('{pr_base_proj_dir}', 'cycles')
+pr_cam_dir = ('{pr_base_proj_dir}', 'cameras')
+pr_data_dir = ('{pr_base_proj_dir}', 'data')
+
+# Formulas for finding generic data.
+pr_config_dir = ('{pr_base_dir}', 'config')
+pr_projects_file = ('{pr_base_dir}', 'projects.xml')
+pr_globals_dir = ('{pr_config_dir}', 'global')
+
+# Formulas for finding asset and assembly documents.
+pr_assets_file = ('{pr_data_dir}', 'assets.xml')
+pr_assemblies_file = ('{pr_data_dir}', 'assemblies.xml')
+pr_cycles_file = ('{pr_data_dir}', 'cycles.xml')
+pr_sequences_data_file = ('{pr_data_dir}', 'sequences.xml')

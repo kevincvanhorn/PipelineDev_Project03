@@ -1,0 +1,25 @@
+# Valid 'root' disk types are: code, config, render, store, and work.
+# Valid keys for use as variable in any of the formulas are:
+#   drive, disk_type, project, sequence, shot, cycle, context_type, asset, asset_type
+#   assembly, discipline, work_area, version, wa_version
+
+# Base asset formulas.
+as_type_dir = ('{pr_as_dir}', '{asset_type}')
+as_name_dir = ('{as_type_dir}', '{asset}')
+as_disc_dir = ('{as_name_dir}', '{discipline}')
+as_pub_dir = ('{as_disc_dir}', 'published')
+
+# Asset published model formulas.
+as_model_pub_type_dir = ('{as_pub_dir}', 'model_base')
+as_model_pub_official_dir = ('{as_model_pub_type_dir}', 'official')
+as_model_pub_official_file = ('{as_model_pub_official_dir}', '{asset}.ma')
+
+# Asset published rig formulas.
+as_rig_pub_type_dir = ('{as_pub_dir}', '{rig_type}')
+as_rig_pub_official_dir = ('{as_rig_pub_type_dir}', 'official')
+as_rig_pub_official_file = ('{as_rig_pub_official_dir}', '{asset}.ma')
+
+# Asset thumbnail formulas.
+as_thumb_dir = ('{as_name_dir}', 'thumbnails')
+as_thumb_size_dir = ('{as_thumb_dir}', '{size}')
+as_thumb_file = ('{as_thumb_size_dir}', '{asset}.png')

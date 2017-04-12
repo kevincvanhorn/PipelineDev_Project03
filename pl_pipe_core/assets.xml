@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<root>
+    <asset>
+        <merry>
+            <modified_date value="12/12/13"/>
+            <modified_by value="ckent"/>
+            <description value="this is the merry asset"/>
+            <created_by value="bwayne"/>
+            <creation_date value="12/12/12"/>
+            <asset_type value="character"/>
+            <_id value="ajjqoimpeocjs"/>
+            <name value="merry"/>
+        </merry>
+        <larry>
+            <modified_date value="12/12/13"/>
+            <modified_by value="bwayne"/>
+            <description value="this is the larry asset"/>
+            <created_by value="ckent"/>
+            <creation_date value="12/12/12"/>
+            <asset_type value="prop"/>
+            <_id value="ajjqoigpeocjs"/>
+            <name value="larry"/>
+        </larry>
+    </asset>
+</root>
