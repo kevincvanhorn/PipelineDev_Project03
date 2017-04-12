@@ -36,6 +36,7 @@ import os                                           # File IO.
 from pl_pipe_utils.utils import IO                  # For printing.
 from pl_pipe_utils.utils import Autovivification    # Dictionary AutoVivification.
 from pl_pipe_utils.xml_utils import ReadObjectXML   # Reads an XML.
+from pl_pipe_utils.pl_pipe_enums import OS
 
 #----------------------------------------------------------------------------------------#
 #--------------------------------------------------------------------------- FUNCTIONS --#
@@ -65,7 +66,8 @@ class Project(object):
         :type: bool
         """
         # Create full file path:
-        self.xml_file = str(os.path.dirname(__file__)) + '\\' + self.xml_file
+        self.xml_file = OS.drive + '\\' + self.xml_file
+        print(self.xml_file)
 
         # Verify file exists on disk.
         if not os.path.isfile(self.xml_file):
@@ -123,7 +125,7 @@ class Asset(object):
         :type: bool
         """
         # Create full file path:
-        self.xml_file = str(os.path.dirname(__file__)) + '\\' + self.xml_file
+        self.xml_file = str(os.path.dirname(__file__)) + self.xml_file
 
         # Make sure the file exists on disk.
         if not os.path.isfile(self.xml_file):
@@ -206,3 +208,6 @@ class AssetObject(object):
         self.asset_type = kwargs.setdefault('asset_type', None)
         self._id = kwargs.setdefault('_id', None)
         self.name = kwargs.setdefault('name', None)
+
+project = Project()
+print(project.find_xml())

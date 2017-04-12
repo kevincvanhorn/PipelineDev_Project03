@@ -61,7 +61,7 @@ class BaseEnumOS(object):
         Set the value of drive here.
         """
         if self.os == 'Windows':
-            self.drive = "//infinity/atec/class/atec4371.002.17s"
+            self.drive = "C:/Users/Kevin/OneDrive/School/17s/Python/tempdir/"#"//infinity/atec/class/atec4371.002.17s"
         elif self.os == 'Linux':
             self.drive = OSDrive.LINUX
         elif self.os == 'DARWIN':

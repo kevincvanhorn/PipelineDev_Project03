@@ -101,7 +101,8 @@ class PathContext(object):
                 path = path[length:] #remove length of string read from beginning of path.
 
 
-some_path = '//infinity/atec/class/atec4371.002.17s/work/finding_nemo/assets/character/dory'
+some_path = 'C:/Users/Kevin/OneDrive/School/17s/Python/tempdir/assets/character/dory'
 context = get_pipe_context(some_path)
 #IO.info(context.project)
-context.eval_path('as_pub_dir', discipline='ani')
+#context.eval_path('as_pub_dir', discipline='ani')
+

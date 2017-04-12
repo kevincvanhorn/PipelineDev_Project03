@@ -137,8 +137,6 @@ class PathContext(object):
                     output_path += '/' + kwargs[entry]
                 # Append entry defined in pipe_context to output_path:
                 else:
-                    #print(entry)
-                    #print(self.pipe_context.__dict__[entry])
                     output_path += '/' + self.pipe_context.__dict__[entry]
             # Append entries that do not need to be replaced:
             else:
