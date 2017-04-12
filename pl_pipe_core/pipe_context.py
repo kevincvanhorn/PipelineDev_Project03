@@ -35,6 +35,7 @@ from pd_path_lib.formula_manager import FormulaManager  # Handles project formul
 from pl_pipe_utils.pl_pipe_enums import OS
 from pl_pipe_utils.utils import Autovivification
 from pl_pipe_utils.pl_pipe_enums import DiskTypes
+from pl_pipe_utils.utils import IO
 
 #----------------------------------------------------------------------------------------#
 #--------------------------------------------------------------------------- FUNCTIONS --#
@@ -50,8 +51,9 @@ def get_pipe_context(path):
     :type: PipeContext
     """
     # Uses get_pipe_context to do the work
-    pipe_context = PipeContext()
+    drivestr = str('drive=' + OS.drive)
     PathContext.examine_path(path)
+    pipe_context = PipeContext(disk_type='work', drive=OS.drive)
     return pipe_context
 #----------------------------------------------------------------------------------------#
 #----------------------------------------------------------------------------- CLASSES --#
@@ -61,9 +63,9 @@ class PathContext(object):
         pass
 
     @classmethod
-    def examine_path(cls, path, **kwargs):
+    def examine_path(cls, path):
         formula = FormulaManager()
-        pipe_context = PipeContext()
+        #pipe_context = PipeContext()
         validKeys = Autovivification()
 
         # Load into formula dictionary from the formulas.txt documents depending on the path provided.
@@ -73,7 +75,9 @@ class PathContext(object):
             formula.create_formulas("")
 
         formula_pieces = formula.get_formula('pr_base_dir')
+        print(formula_pieces)
 
+        # Add valid Entries to cross check with path.
         validKeys['drive'] = OS.drive
         validKeys['disk_type'] = DiskTypes.get_all()
 
@@ -99,4 +103,5 @@ class PathContext(object):
 
 some_path = '//infinity/atec/class/atec4371.002.17s/work/finding_nemo/assets/character/dory'
 context = get_pipe_context(some_path)
-#context.eval_path('as_pub_dir', discipline='ani')
+#IO.info(context.project)
+context.eval_path('as_pub_dir', discipline='ani')

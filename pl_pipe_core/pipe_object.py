@@ -180,6 +180,11 @@ class ProjectObject(object):
         self._id = kwargs.setdefault('_id', None)
         self.name = kwargs.setdefault('name', None)
 
+    def get_assets(self):
+        """
+        Uses what information it has to find the assets XML that belongs to it, then makes objects of them.
+        :return:
+        """
 
 class AssetObject(object):
     """
