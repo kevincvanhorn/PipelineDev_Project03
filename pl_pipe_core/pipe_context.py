@@ -61,7 +61,13 @@ class PathContext(object):
         formula = FormulaManager()
 
         # Get the formula for the given path:
-        #formula_pieces = formula.get_formula(path)
+
+        if "assets" in path:
+            formula_pieces = formula.create_formulas("as_")
+        else:
+            formula_pieces = formula.create_formulas("")
+
+        print(formula_pieces)
 
         #if not formula_pieces:
         #    print("ERROR: formula is invalid.")
@@ -70,4 +76,4 @@ class PathContext(object):
 
 some_path = '//infinity/atec/class/atec3370.001.16f/work/finding_nemo/assets/character/dory'
 context = get_pipe_context(some_path)
-context.eval_path('as_pub_dir', discipline='ani')
+#context.eval_path('as_pub_dir', discipline='ani')

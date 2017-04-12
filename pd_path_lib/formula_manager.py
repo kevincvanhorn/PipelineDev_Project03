@@ -54,7 +54,7 @@ class FormulaManager(object):
         self.formulas_path_project = "pl_path_lib\project_formulas.txt"
         self.formulas_path_asset = "pl_path_lib\\asset_formulas.txt"
         self.formula_dict = OrderedDict()  # Dictionary to hold lines of project_formulas.
-        self.list = []                     # A list of lines in the formulas.
+        self.formula_list = []                     # A list of lines in the formulas.
         self.loaded = False                # True if file is loaded and dictionary made.
 
     def read_formulas(self, formula_name):
@@ -80,10 +80,10 @@ class FormulaManager(object):
         with open(self.formulas_path_project, 'r') as fh:
             for line in fh:
                 if line[:1] != '#' and line[:1] != '\n':  # Avoid blank/commented lines.
-                    self.list.append(line)                # Store lines in list.
+                    self.formula_list.append(line)                # Store lines in list.
 
         # If Asset Formula:
-        if 1==1:#formula_name.startswith("as_"):
+        if formula_name.startswith("as_"):
             self.formulas_path_asset = os.path.abspath(os.path.join(base_path, "..", self.formulas_path_asset))
 
             # Validate file path:
@@ -95,7 +95,8 @@ class FormulaManager(object):
             with open(self.formulas_path_asset, 'r') as fh:
                 for line in fh:
                     if line[:1] != '#' and line[:1] != '\n':  # Avoid blank/commented lines.
-                        self.list.append(line)  # Store lines in list.
+                        self.formula_list.append(line)  # Store lines in list.
+        return True #self.formula_list
 
     def split_formulas(self):
         """
@@ -106,7 +107,7 @@ class FormulaManager(object):
         """
         count = 0  # Tracks the index in the list of lines.
         # Store formulas in dictionary:
-        for line in self.list:
+        for line in self.formula_list:
             parts = line.split()                # Array of parts in a line.
             self.formula_dict[parts[0]] = line  # Line is stored under first word as key.
             count += 1
@@ -158,7 +159,7 @@ class FormulaManager(object):
         self.clean_formulas()
         self.expand_formulas()
         self.loaded = True
-        return True
+        return self.formula_dict
 
     def get_formula(self, formula_name):
         """
@@ -171,8 +172,6 @@ class FormulaManager(object):
         # Call methods to create formula.
         if not self.loaded:
             self.create_formulas(formula_name)
-
-        print(formula_name)
 
         if formula_name in self.formula_dict:
             return self.formula_dict[formula_name]

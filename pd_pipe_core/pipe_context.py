@@ -65,6 +65,11 @@ class PipeContext(object):
         self.version = kwargs.setdefault('version', None)
         self.wa_version = kwargs.setdefault('wa_version', None)
 
+        # Assign Asset Defaults to None
+        self.rig_type = kwargs.setdefault('rig_type', None)
+        self.size = kwargs.setdefault('size', None)
+
+
     def eval_path(self, path, **kwargs):
         """
         Passes itself to the PathContext class, along with any kwargs and returns a
@@ -127,6 +132,8 @@ class PathContext(object):
                     output_path += '/' + kwargs[entry]
                 # Append entry defined in pipe_context to output_path:
                 else:
+                    print(entry)
+                    print(self.pipe_context.__dict__[entry])
                     output_path += '/' + self.pipe_context.__dict__[entry]
             # Append entries that do not need to be replaced:
             else:
