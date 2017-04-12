@@ -18,8 +18,8 @@
       <file leaf-file-name="pipe_context.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pl_pipe_core/pipe_context.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+            <state relative-caret-position="68">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#761#770#0" expanded="true" />
               </folding>
@@ -665,8 +665,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pl_pipe_core/pipe_context.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
+        <state relative-caret-position="68">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#761#770#0" expanded="true" />
           </folding>

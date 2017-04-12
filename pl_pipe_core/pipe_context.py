@@ -74,18 +74,22 @@ class PathContext(object):
 
         formula_pieces = formula.get_formula('pr_base_dir')
 
-        # WORKING - add all things from enums into this dictionary - make sure 'disk' is the correct format
-                #ie. not {disk} or something
         validKeys['drive'] = OS.drive
-        #validKeys['disk_type'] = DiskTypes.get_all()
-
+        validKeys['disk_type'] = DiskTypes.get_all()
 
         # Replace path references:
         for entry in formula_pieces:
             entry = re.sub(r'[\{\}]', "", entry)  # Remove braces from entry.
             if entry in validKeys.keys():
-                # WORKING, PUT FOR THE ARRAY CASE IN DISKTYPE FROM GET ALL
-                if not path.startswith(validKeys[entry], 0, len(validKeys[entry])):
+                matchcount = 0
+                if entry == 'disk_type':
+                    for i in range(len(validKeys[entry])):
+                        if path.startswith(validKeys[entry][i], 0, len(validKeys[entry][i])):
+                            matchcount += 1
+                    if matchcount != 1:
+                        print("Result: Unable to find valid context information for this formula ")
+                        return False
+                elif not path.startswith(validKeys[entry], 0, len(validKeys[entry])):
                     # Invalid String
                     print("Result: Unable to find valid context information for this formula ")
                     return False
@@ -93,6 +97,6 @@ class PathContext(object):
                 path = path[length:] #remove length of string read from beginning of path.
 
 
-some_path = '//infinity/atec/class/atec3370.001.16f/work/finding_nemo/assets/character/dory'
+some_path = '//infinity/atec/class/atec4371.002.17s/work/finding_nemo/assets/character/dory'
 context = get_pipe_context(some_path)
 #context.eval_path('as_pub_dir', discipline='ani')
